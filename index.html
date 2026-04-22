@@ -4,84 +4,628 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>A & N Sweet n Spicy</title>
-
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
-
 <style>
-/* KEEP ALL YOUR ORIGINAL CSS */
-*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
-:root {
-  --purple: #6B21A8;
-  --purple-light: #9333EA;
-  --purple-pale: #F5F0FF;
-  --red: #DC2626;
-  --red-light: #EF4444;
-  --cream: #FFFDF7;
-  --dark: #1A0A2E;
-  --gray: #6B7280;
-  --border: #E9E3F5;
-}
+  :root {
+    --purple: #6B21A8;
+    --purple-light: #9333EA;
+    --purple-pale: #F5F0FF;
+    --red: #DC2626;
+    --red-light: #EF4444;
+    --cream: #FFFDF7;
+    --dark: #1A0A2E;
+    --gray: #6B7280;
+    --border: #E9E3F5;
+  }
 
-/* ADD THIS */
-.logo-img {
-  height: 40px;
-  border-radius: 10px;
-  margin-right: 10px;
-  vertical-align: middle;
-}
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: 'DM Sans', sans-serif;
+    background: var(--cream);
+    color: var(--dark);
+    overflow-x: hidden;
+  }
+
+  nav {
+    position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+    background: rgba(255,253,247,0.92);
+    backdrop-filter: blur(12px);
+    border-bottom: 1px solid var(--border);
+    padding: 0 2rem;
+    display: flex; align-items: center; justify-content: space-between;
+    height: 64px;
+  }
+
+  .nav-logo {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.1rem;
+    font-weight: 700;
+    color: var(--purple);
+    letter-spacing: -0.02em;
+  }
+
+  .nav-logo span { color: var(--red); }
+
+  .nav-links { display: flex; gap: 2rem; list-style: none; }
+
+  .nav-links a {
+    text-decoration: none;
+    font-size: 0.875rem;
+    font-weight: 500;
+    color: var(--dark);
+    transition: color 0.2s;
+  }
+
+  .nav-links a:hover { color: var(--purple); }
+
+  .nav-cta {
+    background: var(--red);
+    color: white;
+    border: none;
+    padding: 0.5rem 1.25rem;
+    border-radius: 999px;
+    font-size: 0.875rem;
+    font-weight: 500;
+    cursor: pointer;
+    font-family: 'DM Sans', sans-serif;
+    transition: background 0.2s, transform 0.15s;
+    text-decoration: none;
+    display: inline-block;
+  }
+
+  .nav-cta:hover { background: var(--red-light); transform: scale(1.03); }
+
+  .hero {
+    min-height: 100vh;
+    display: flex; align-items: center;
+    padding: 5rem 3rem 3rem;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .hero-bg {
+    position: absolute; inset: 0;
+    background: radial-gradient(ellipse 80% 60% at 70% 50%, #F5E6FF 0%, transparent 70%),
+                radial-gradient(ellipse 40% 40% at 20% 80%, #FFE8E8 0%, transparent 60%);
+    z-index: 0;
+  }
+
+  .hero-content { position: relative; z-index: 1; max-width: 580px; }
+
+  .hero-badge {
+    display: inline-flex; align-items: center; gap: 6px;
+    background: var(--purple-pale);
+    color: var(--purple);
+    border: 1px solid #D8B4FE;
+    border-radius: 999px;
+    padding: 0.35rem 1rem;
+    font-size: 0.8rem;
+    font-weight: 500;
+    margin-bottom: 1.5rem;
+    animation: fadeUp 0.6s ease both;
+  }
+
+  .hero-badge .dot {
+    width: 6px; height: 6px;
+    background: var(--red);
+    border-radius: 50%;
+    animation: pulse 2s infinite;
+  }
+
+  @keyframes pulse {
+    0%, 100% { opacity: 1; transform: scale(1); }
+    50% { opacity: 0.6; transform: scale(1.3); }
+  }
+
+  h1 {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(2.8rem, 6vw, 4.5rem);
+    line-height: 1.08;
+    font-weight: 900;
+    letter-spacing: -0.03em;
+    margin-bottom: 1.25rem;
+    animation: fadeUp 0.6s 0.1s ease both;
+  }
+
+  h1 .accent { color: var(--red); }
+  h1 .accent2 { color: var(--purple); }
+
+  .hero-sub {
+    font-size: 1.05rem;
+    color: var(--gray);
+    line-height: 1.7;
+    max-width: 440px;
+    margin-bottom: 2rem;
+    animation: fadeUp 0.6s 0.2s ease both;
+    font-weight: 300;
+  }
+
+  .hero-actions {
+    display: flex; gap: 0.75rem; flex-wrap: wrap;
+    animation: fadeUp 0.6s 0.3s ease both;
+  }
+
+  .btn-primary {
+    background: var(--purple);
+    color: white;
+    border: none;
+    padding: 0.8rem 1.75rem;
+    border-radius: 999px;
+    font-size: 0.95rem;
+    font-weight: 500;
+    cursor: pointer;
+    font-family: 'DM Sans', sans-serif;
+    transition: background 0.2s, transform 0.15s;
+    text-decoration: none;
+    display: inline-block;
+  }
+
+  .btn-primary:hover { background: var(--purple-light); transform: scale(1.03); }
+
+  .btn-red {
+    background: var(--red);
+    color: white;
+    border: none;
+    padding: 0.8rem 1.75rem;
+    border-radius: 999px;
+    font-size: 0.95rem;
+    font-weight: 500;
+    cursor: pointer;
+    font-family: 'DM Sans', sans-serif;
+    transition: background 0.2s, transform 0.15s;
+    text-decoration: none;
+    display: inline-block;
+  }
+
+  .btn-red:hover { background: var(--red-light); transform: scale(1.03); }
+
+  .hero-visual {
+    position: absolute; right: 3rem; top: 50%;
+    transform: translateY(-50%);
+    width: min(420px, 44%);
+    display: flex; flex-direction: column; gap: 1rem;
+    animation: fadeLeft 0.7s 0.2s ease both;
+  }
+
+  @keyframes fadeLeft {
+    from { opacity: 0; transform: translateY(-50%) translateX(30px); }
+    to { opacity: 1; transform: translateY(-50%) translateX(0); }
+  }
+
+  .food-card {
+    background: white;
+    border: 1px solid var(--border);
+    border-radius: 20px;
+    padding: 1.25rem;
+    display: flex; align-items: center; gap: 1rem;
+    box-shadow: 0 4px 24px rgba(107,33,168,0.06);
+    transition: transform 0.3s;
+  }
+
+  .food-card:hover { transform: translateY(-3px); }
+  .food-emoji { font-size: 2.5rem; flex-shrink: 0; }
+
+  .food-info h3 {
+    font-family: 'Playfair Display', serif;
+    font-size: 1rem;
+    font-weight: 700;
+    margin-bottom: 0.2rem;
+  }
+
+  .food-info p { font-size: 0.8rem; color: var(--gray); }
+
+  .food-tag {
+    margin-left: auto;
+    background: var(--purple-pale);
+    color: var(--purple);
+    font-size: 0.7rem;
+    font-weight: 500;
+    padding: 0.25rem 0.6rem;
+    border-radius: 999px;
+    flex-shrink: 0;
+  }
+
+  .food-tag.hot { background: #FFF0F0; color: var(--red); }
+
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  section { padding: 5rem 2rem; max-width: 1100px; margin: 0 auto; }
+
+  .section-label {
+    font-size: 0.75rem;
+    font-weight: 500;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--purple);
+    margin-bottom: 0.75rem;
+  }
+
+  h2 {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(2rem, 4vw, 3rem);
+    font-weight: 900;
+    letter-spacing: -0.03em;
+    line-height: 1.1;
+    margin-bottom: 1rem;
+  }
+
+  .section-sub {
+    font-size: 1rem;
+    color: var(--gray);
+    max-width: 500px;
+    line-height: 1.7;
+    font-weight: 300;
+    margin-bottom: 3rem;
+  }
+
+  .full-divider { width: 100%; height: 1px; background: var(--border); }
+
+  .menu-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 1.5rem;
+  }
+
+  .menu-item {
+    background: white;
+    border: 1px solid var(--border);
+    border-radius: 24px;
+    padding: 2rem;
+    position: relative;
+    overflow: hidden;
+    transition: transform 0.3s, box-shadow 0.3s;
+  }
+
+  .menu-item:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 16px 48px rgba(107,33,168,0.1);
+  }
+
+  .menu-item::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    height: 4px;
+  }
+
+  .menu-item.purple::before { background: linear-gradient(90deg, #6B21A8, #9333EA); }
+  .menu-item.red::before { background: linear-gradient(90deg, #DC2626, #F97316); }
+
+  .menu-emoji { font-size: 3rem; margin-bottom: 1rem; display: block; }
+
+  .menu-item h3 {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.4rem;
+    font-weight: 700;
+    margin-bottom: 0.5rem;
+  }
+
+  .menu-item p {
+    font-size: 0.875rem;
+    color: var(--gray);
+    line-height: 1.6;
+    font-weight: 300;
+    margin-bottom: 1rem;
+  }
+
+  .menu-sizes { display: flex; gap: 0.5rem; flex-wrap: wrap; }
+
+  .size-pill {
+    background: var(--purple-pale);
+    color: var(--purple);
+    font-size: 0.75rem;
+    font-weight: 500;
+    padding: 0.3rem 0.8rem;
+    border-radius: 999px;
+    border: 1px solid #D8B4FE;
+  }
+
+  .size-pill.hot { background: #FFF0F0; color: var(--red); border-color: #FECACA; }
+
+  .menu-spice { display: flex; gap: 3px; margin-top: 1rem; }
+  .chili { font-size: 14px; }
+
+  .pricing-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+    gap: 1.5rem;
+  }
+
+  .price-card {
+    background: white;
+    border: 1px solid var(--border);
+    border-radius: 24px;
+    padding: 2rem;
+    text-align: center;
+    transition: transform 0.3s, box-shadow 0.3s;
+    position: relative;
+  }
+
+  .price-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 16px 48px rgba(107,33,168,0.1);
+  }
+
+  .price-card.featured {
+    background: var(--purple);
+    border-color: var(--purple);
+  }
+
+  .featured-badge {
+    position: absolute;
+    top: -12px; left: 50%;
+    transform: translateX(-50%);
+    background: var(--red);
+    color: white;
+    font-size: 0.7rem;
+    font-weight: 500;
+    padding: 0.25rem 0.9rem;
+    border-radius: 999px;
+    white-space: nowrap;
+  }
+
+  .price-emoji { font-size: 2rem; margin-bottom: 1rem; display: block; }
+
+  .price-card h3 {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.2rem;
+    font-weight: 700;
+    margin-bottom: 1rem;
+    color: var(--dark);
+  }
+
+  .price-card.featured h3 { color: white; }
+
+  .price-row {
+    display: flex; justify-content: space-between; align-items: center;
+    padding: 0.6rem 0;
+    border-bottom: 1px solid var(--border);
+    font-size: 0.9rem;
+  }
+
+  .price-card.featured .price-row { border-bottom-color: rgba(255,255,255,0.15); }
+  .price-row:last-of-type { border-bottom: none; margin-bottom: 1.25rem; }
+
+  .size-label { color: var(--gray); font-weight: 300; }
+  .price-card.featured .size-label { color: #C4B5FD; }
+
+  .price-val {
+    font-weight: 500;
+    font-family: 'Playfair Display', serif;
+    font-size: 1.1rem;
+    color: var(--purple);
+  }
+
+  .price-card.featured .price-val { color: #E9D5FF; }
+
+  .price-btn {
+    width: 100%;
+    padding: 0.7rem;
+    border-radius: 999px;
+    font-size: 0.875rem;
+    font-weight: 500;
+    cursor: pointer;
+    font-family: 'DM Sans', sans-serif;
+    transition: all 0.2s;
+    border: 1.5px solid var(--border);
+    background: transparent;
+    color: var(--dark);
+    text-decoration: none;
+    display: block;
+    text-align: center;
+  }
+
+  .price-card.featured .price-btn {
+    background: white;
+    color: var(--purple);
+    border-color: white;
+  }
+
+  .price-btn:hover { background: var(--purple-pale); border-color: var(--purple); color: var(--purple); }
+  .price-card.featured .price-btn:hover { background: #F5F0FF; }
+
+  .payment-banner {
+    background: var(--dark);
+    color: white;
+    padding: 3rem 2rem;
+    text-align: center;
+  }
+
+  .payment-banner h3 {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.5rem;
+    font-weight: 700;
+    margin-bottom: 0.5rem;
+  }
+
+  .payment-banner p {
+    font-size: 0.9rem;
+    color: #9CA3AF;
+    font-weight: 300;
+    margin-bottom: 1.5rem;
+  }
+
+  .greenlight-badge {
+    display: inline-flex; align-items: center; gap: 8px;
+    background: #16A34A;
+    color: white;
+    padding: 0.6rem 1.5rem;
+    border-radius: 999px;
+    font-size: 0.875rem;
+    font-weight: 500;
+    text-decoration: none;
+    transition: background 0.2s, transform 0.15s;
+  }
+
+  .greenlight-badge:hover { background: #15803D; transform: scale(1.03); }
+
+  .greenlight-dot { width: 8px; height: 8px; background: #4ADE80; border-radius: 50%; }
+
+  footer {
+    background: var(--dark);
+    color: white;
+    padding: 2.5rem 2rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 1rem;
+    border-top: 1px solid rgba(255,255,255,0.08);
+  }
+
+  .footer-logo { font-family: 'Playfair Display', serif; font-size: 1.1rem; font-weight: 700; color: white; }
+  .footer-logo span { color: #F87171; }
+  footer p { font-size: 0.8rem; color: #6B7280; font-weight: 300; }
+
+  @media (max-width: 700px) {
+    .hero { min-height: auto; padding-bottom: 2rem; padding-left: 1.5rem; padding-right: 1.5rem; }
+    .hero-visual { display: none; }
+    nav .nav-links { display: none; }
+    h1 { font-size: 2.4rem; }
+  }
 </style>
 </head>
-
 <body>
 
-<!-- NAV -->
 <nav>
-  <div class="nav-logo">
-    <img src="logo.png" class="logo-img">
-    A & N <span>Sweet n Spicy</span>
-  </div>
-
+  <div class="nav-logo">A & N <span>Sweet n Spicy</span></div>
   <ul class="nav-links">
     <li><a href="#menu">Menu</a></li>
     <li><a href="#pricing">Pricing</a></li>
     <li><a href="#contact">Contact</a></li>
   </ul>
-
   <a href="https://gl.me/u/TkzVlKZMhJsb" target="_blank" class="nav-cta">Order Now</a>
 </nav>
 
-<!-- KEEP EVERYTHING ELSE THE SAME (HERO, MENU, PRICING, ETC.) -->
+<div class="hero">
+  <div class="hero-bg"></div>
+  <div class="hero-content">
+    <div class="hero-badge">
+      <div class="dot"></div>
+      Now serving Maricopa, AZ
+    </div>
+    <h1>
+      <span class="accent2">Sweet.</span> <span class="accent">Spicy.</span><br>Unforgettable.
+    </h1>
+    <p class="hero-sub">
+      Authentic Mexican snacks made fresh — elote cups and spicy gummies that hit different every time.
+    </p>
+    <div class="hero-actions">
+      <a href="#menu" class="btn-primary">See Our Menu</a>
+      <a href="https://gl.me/u/TkzVlKZMhJsb" target="_blank" class="btn-red">Order Now</a>
+    </div>
+  </div>
+  <div class="hero-visual">
+    <div class="food-card">
+      <span class="food-emoji">🌽</span>
+      <div class="food-info">
+        <h3>Elote Cup</h3>
+        <p>Street corn with crema, cheese & chili</p>
+      </div>
+      <span class="food-tag hot">🔥 Fan Fave</span>
+    </div>
+    <div class="food-card">
+      <span class="food-emoji">🍬</span>
+      <div class="food-info">
+        <h3>Spicy Gummies</h3>
+        <p>Chamoy gummies, small or large bag</p>
+      </div>
+      <span class="food-tag hot">Caliente</span>
+    </div>
+  </div>
+</div>
 
-<!-- CONTACT SECTION -->
+<div class="full-divider"></div>
+
+<section id="menu">
+  <div class="section-label">What We Make</div>
+  <h2>Fresh. Bold. <em style="color: var(--red); font-style: italic;">Always</em> made with love.</h2>
+  <p class="section-sub">Every item is prepared fresh to order, bursting with authentic Mexican flavors.</p>
+  <div class="menu-grid">
+    <div class="menu-item purple">
+      <span class="menu-emoji">🌽</span>
+      <h3>Elote Cup</h3>
+      <p>Classic street corn in a cup with mayo crema, cotija cheese, chili powder, and a squeeze of fresh lime. Creamy, crunchy, and completely addictive.</p>
+      <div class="menu-sizes">
+        <span class="size-pill">8 oz — $3</span>
+        <span class="size-pill">16 oz — $5</span>
+      </div>
+      <div class="menu-spice">
+        <span class="chili">🌶️</span><span class="chili">🌶️</span>
+      </div>
+    </div>
+    <div class="menu-item red">
+      <span class="menu-emoji">🍬</span>
+      <h3>Spicy Gummies</h3>
+      <p>Chamoy-coated gummies loaded with Tajín and tamarindo flavor. Sweet, sour, and spicy all at once — totally addicting and impossible to stop at just one.</p>
+      <div class="menu-sizes">
+        <span class="size-pill hot">Small — $3</span>
+        <span class="size-pill hot">Large — $5</span>
+      </div>
+      <div class="menu-spice">
+        <span class="chili">🌶️</span><span class="chili">🌶️</span><span class="chili">🌶️</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="full-divider"></div>
+
+<section id="pricing">
+  <div class="section-label">Pricing</div>
+  <h2>Simple, <em style="color: var(--purple); font-style: italic;">honest</em> prices.</h2>
+  <p class="section-sub">No hidden fees, no surprises. Just great snacks at fair prices.</p>
+  <div class="pricing-grid">
+    <div class="price-card featured">
+      <div class="featured-badge">Fan Favorite</div>
+      <span class="price-emoji">🌽</span>
+      <h3>Elote Cup</h3>
+      <div class="price-row">
+        <span class="size-label">8 oz</span>
+        <span class="price-val">$3</span>
+      </div>
+      <div class="price-row">
+        <span class="size-label">16 oz</span>
+        <span class="price-val">$5</span>
+      </div>
+      <a href="https://gl.me/u/TkzVlKZMhJsb" target="_blank" class="price-btn">Order via Greenlight</a>
+    </div>
+    <div class="price-card">
+      <span class="price-emoji">🍬</span>
+      <h3>Spicy Gummies</h3>
+      <div class="price-row">
+        <span class="size-label">Small bag</span>
+        <span class="price-val">$3</span>
+      </div>
+      <div class="price-row">
+        <span class="size-label">Large bag</span>
+        <span class="price-val">$5</span>
+      </div>
+      <a href="https://gl.me/u/TkzVlKZMhJsb" target="_blank" class="price-btn">Order via Greenlight</a>
+    </div>
+  </div>
+</section>
+
 <div class="payment-banner" id="contact">
   <h3>Ready to order? We make it easy.</h3>
   <p>We accept payments through Greenlight — fast, safe, and simple.</p>
-
   <a href="https://gl.me/u/TkzVlKZMhJsb" target="_blank" class="greenlight-badge">
+    <div class="greenlight-dot"></div>
     Pay with Greenlight
   </a>
-
-  <!-- ✅ NEW INSTAGRAM BUTTON -->
-  <div style="margin-top:20px;">
-    <a href="https://instagram.com/a.n.sweetnspicy" target="_blank"
-       style="background:#E1306C; color:white; padding:10px 20px; border-radius:999px; text-decoration:none; display:inline-block;">
-       📸 Follow us on Instagram @a.n.sweetnspicy
-    </a>
-  </div>
-
   <p style="margin-top: 1.25rem; font-size: 0.8rem; color: #6B7280;">
     Serving Maricopa, AZ · Reach out to check availability.
   </p>
 </div>
 
-<!-- FOOTER -->
 <footer>
-  <div class="footer-logo">
-    <img src="logo.png" class="logo-img">
-    A & N <span>Sweet n Spicy</span>
-  </div>
-
+  <div class="footer-logo">A & N <span>Sweet n Spicy</span></div>
   <p>Maricopa, AZ · Mexican Snacks Done Right</p>
   <p>© 2026 A & N Sweet n Spicy</p>
 </footer>
