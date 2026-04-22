@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -29,7 +30,6 @@
     overflow-x: hidden;
   }
 
-  /* NAV */
   nav {
     position: fixed; top: 0; left: 0; right: 0; z-index: 100;
     background: rgba(255,253,247,0.92);
@@ -50,9 +50,7 @@
 
   .nav-logo span { color: var(--red); }
 
-  .nav-links {
-    display: flex; gap: 2rem; list-style: none;
-  }
+  .nav-links { display: flex; gap: 2rem; list-style: none; }
 
   .nav-links a {
     text-decoration: none;
@@ -75,11 +73,12 @@
     cursor: pointer;
     font-family: 'DM Sans', sans-serif;
     transition: background 0.2s, transform 0.15s;
+    text-decoration: none;
+    display: inline-block;
   }
 
   .nav-cta:hover { background: var(--red-light); transform: scale(1.03); }
 
-  /* HERO */
   .hero {
     min-height: 100vh;
     display: flex; align-items: center;
@@ -95,10 +94,7 @@
     z-index: 0;
   }
 
-  .hero-content {
-    position: relative; z-index: 1;
-    max-width: 580px;
-  }
+  .hero-content { position: relative; z-index: 1; max-width: 580px; }
 
   .hero-badge {
     display: inline-flex; align-items: center; gap: 6px;
@@ -170,22 +166,22 @@
 
   .btn-primary:hover { background: var(--purple-light); transform: scale(1.03); }
 
-  .btn-outline {
-    background: transparent;
-    color: var(--dark);
-    border: 1.5px solid var(--border);
+  .btn-red {
+    background: var(--red);
+    color: white;
+    border: none;
     padding: 0.8rem 1.75rem;
     border-radius: 999px;
     font-size: 0.95rem;
     font-weight: 500;
     cursor: pointer;
     font-family: 'DM Sans', sans-serif;
-    transition: border-color 0.2s, transform 0.15s;
+    transition: background 0.2s, transform 0.15s;
     text-decoration: none;
     display: inline-block;
   }
 
-  .btn-outline:hover { border-color: var(--purple); transform: scale(1.03); }
+  .btn-red:hover { background: var(--red-light); transform: scale(1.03); }
 
   .hero-visual {
     position: absolute; right: 3rem; top: 50%;
@@ -211,7 +207,6 @@
   }
 
   .food-card:hover { transform: translateY(-3px); }
-
   .food-emoji { font-size: 2.5rem; flex-shrink: 0; }
 
   .food-info h3 {
@@ -221,10 +216,7 @@
     margin-bottom: 0.2rem;
   }
 
-  .food-info p {
-    font-size: 0.8rem;
-    color: var(--gray);
-  }
+  .food-info p { font-size: 0.8rem; color: var(--gray); }
 
   .food-tag {
     margin-left: auto;
@@ -244,12 +236,7 @@
     to { opacity: 1; transform: translateY(0); }
   }
 
-  /* SECTION COMMON */
-  section {
-    padding: 5rem 2rem;
-    max-width: 1100px;
-    margin: 0 auto;
-  }
+  section { padding: 5rem 2rem; max-width: 1100px; margin: 0 auto; }
 
   .section-label {
     font-size: 0.75rem;
@@ -278,12 +265,8 @@
     margin-bottom: 3rem;
   }
 
-  .full-divider {
-    width: 100%; height: 1px;
-    background: var(--border);
-  }
+  .full-divider { width: 100%; height: 1px; background: var(--border); }
 
-  /* MENU */
   .menu-grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
@@ -314,7 +297,6 @@
 
   .menu-item.purple::before { background: linear-gradient(90deg, #6B21A8, #9333EA); }
   .menu-item.red::before { background: linear-gradient(90deg, #DC2626, #F97316); }
-  .menu-item.mixed::before { background: linear-gradient(90deg, #9333EA, #DC2626); }
 
   .menu-emoji { font-size: 3rem; margin-bottom: 1rem; display: block; }
 
@@ -330,15 +312,26 @@
     color: var(--gray);
     line-height: 1.6;
     font-weight: 300;
+    margin-bottom: 1rem;
   }
 
-  .menu-spice {
-    display: flex; gap: 3px; margin-top: 1rem;
+  .menu-sizes { display: flex; gap: 0.5rem; flex-wrap: wrap; }
+
+  .size-pill {
+    background: var(--purple-pale);
+    color: var(--purple);
+    font-size: 0.75rem;
+    font-weight: 500;
+    padding: 0.3rem 0.8rem;
+    border-radius: 999px;
+    border: 1px solid #D8B4FE;
   }
 
+  .size-pill.hot { background: #FFF0F0; color: var(--red); border-color: #FECACA; }
+
+  .menu-spice { display: flex; gap: 3px; margin-top: 1rem; }
   .chili { font-size: 14px; }
 
-  /* PRICING */
   .pricing-grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
@@ -362,7 +355,6 @@
 
   .price-card.featured {
     background: var(--purple);
-    color: white;
     border-color: var(--purple);
   }
 
@@ -385,61 +377,33 @@
     font-family: 'Playfair Display', serif;
     font-size: 1.2rem;
     font-weight: 700;
-    margin-bottom: 0.5rem;
+    margin-bottom: 1rem;
+    color: var(--dark);
   }
 
   .price-card.featured h3 { color: white; }
 
-  .price-amount {
-    font-size: 2.5rem;
-    font-weight: 700;
+  .price-row {
+    display: flex; justify-content: space-between; align-items: center;
+    padding: 0.6rem 0;
+    border-bottom: 1px solid var(--border);
+    font-size: 0.9rem;
+  }
+
+  .price-card.featured .price-row { border-bottom-color: rgba(255,255,255,0.15); }
+  .price-row:last-of-type { border-bottom: none; margin-bottom: 1.25rem; }
+
+  .size-label { color: var(--gray); font-weight: 300; }
+  .price-card.featured .size-label { color: #C4B5FD; }
+
+  .price-val {
+    font-weight: 500;
     font-family: 'Playfair Display', serif;
+    font-size: 1.1rem;
     color: var(--purple);
-    margin: 0.75rem 0 0.25rem;
   }
 
-  .price-card.featured .price-amount { color: #E9D5FF; }
-
-  .price-desc {
-    font-size: 0.8rem;
-    color: var(--gray);
-    margin-bottom: 1.25rem;
-    font-weight: 300;
-    line-height: 1.5;
-  }
-
-  .price-card.featured .price-desc { color: #C4B5FD; }
-
-  .price-features {
-    list-style: none;
-    text-align: left;
-    font-size: 0.8rem;
-    display: flex; flex-direction: column; gap: 0.5rem;
-    margin-bottom: 1.5rem;
-  }
-
-  .price-features li {
-    display: flex; align-items: center; gap: 0.5rem;
-    color: var(--dark);
-    font-weight: 300;
-  }
-
-  .price-card.featured .price-features li { color: #DDD6FE; }
-
-  .checkmark {
-    width: 16px; height: 16px;
-    background: #EDE9FE;
-    color: var(--purple);
-    border-radius: 50%;
-    display: flex; align-items: center; justify-content: center;
-    font-size: 10px;
-    flex-shrink: 0;
-  }
-
-  .price-card.featured .checkmark {
-    background: rgba(255,255,255,0.2);
-    color: white;
-  }
+  .price-card.featured .price-val { color: #E9D5FF; }
 
   .price-btn {
     width: 100%;
@@ -453,6 +417,9 @@
     border: 1.5px solid var(--border);
     background: transparent;
     color: var(--dark);
+    text-decoration: none;
+    display: block;
+    text-align: center;
   }
 
   .price-card.featured .price-btn {
@@ -464,7 +431,6 @@
   .price-btn:hover { background: var(--purple-pale); border-color: var(--purple); color: var(--purple); }
   .price-card.featured .price-btn:hover { background: #F5F0FF; }
 
-  /* PAYMENT BANNER */
   .payment-banner {
     background: var(--dark);
     color: white;
@@ -494,15 +460,14 @@
     border-radius: 999px;
     font-size: 0.875rem;
     font-weight: 500;
+    text-decoration: none;
+    transition: background 0.2s, transform 0.15s;
   }
 
-  .greenlight-dot {
-    width: 8px; height: 8px;
-    background: #4ADE80;
-    border-radius: 50%;
-  }
+  .greenlight-badge:hover { background: #15803D; transform: scale(1.03); }
 
-  /* FOOTER */
+  .greenlight-dot { width: 8px; height: 8px; background: #4ADE80; border-radius: 50%; }
+
   footer {
     background: var(--dark);
     color: white;
@@ -515,23 +480,12 @@
     border-top: 1px solid rgba(255,255,255,0.08);
   }
 
-  .footer-logo {
-    font-family: 'Playfair Display', serif;
-    font-size: 1.1rem;
-    font-weight: 700;
-    color: white;
-  }
-
+  .footer-logo { font-family: 'Playfair Display', serif; font-size: 1.1rem; font-weight: 700; color: white; }
   .footer-logo span { color: #F87171; }
-
-  footer p {
-    font-size: 0.8rem;
-    color: #6B7280;
-    font-weight: 300;
-  }
+  footer p { font-size: 0.8rem; color: #6B7280; font-weight: 300; }
 
   @media (max-width: 700px) {
-    .hero { min-height: auto; padding-bottom: 2rem; }
+    .hero { min-height: auto; padding-bottom: 2rem; padding-left: 1.5rem; padding-right: 1.5rem; }
     .hero-visual { display: none; }
     nav .nav-links { display: none; }
     h1 { font-size: 2.4rem; }
@@ -540,7 +494,6 @@
 </head>
 <body>
 
-<!-- NAV -->
 <nav>
   <div class="nav-logo">A & N <span>Sweet n Spicy</span></div>
   <ul class="nav-links">
@@ -548,26 +501,25 @@
     <li><a href="#pricing">Pricing</a></li>
     <li><a href="#contact">Contact</a></li>
   </ul>
-  <button class="nav-cta">Order Now</button>
+  <a href="https://gl.me/u/TkzVlKZMhJsb" target="_blank" class="nav-cta">Order Now</a>
 </nav>
 
-<!-- HERO -->
 <div class="hero">
   <div class="hero-bg"></div>
   <div class="hero-content">
     <div class="hero-badge">
       <div class="dot"></div>
-      Now serving Phoenix, AZ
+      Now serving Maricopa, AZ
     </div>
     <h1>
       <span class="accent2">Sweet.</span> <span class="accent">Spicy.</span><br>Unforgettable.
     </h1>
     <p class="hero-sub">
-      Authentic Mexican snacks made fresh — elote cups, fruit cups, and spicy candy that hit different every time.
+      Authentic Mexican snacks made fresh — elote cups and spicy gummies that hit different every time.
     </p>
     <div class="hero-actions">
       <a href="#menu" class="btn-primary">See Our Menu</a>
-      <a href="#pricing" class="btn-outline">View Pricing</a>
+      <a href="https://gl.me/u/TkzVlKZMhJsb" target="_blank" class="btn-red">Order Now</a>
     </div>
   </div>
   <div class="hero-visual">
@@ -580,18 +532,10 @@
       <span class="food-tag hot">🔥 Fan Fave</span>
     </div>
     <div class="food-card">
-      <span class="food-emoji">🍉</span>
-      <div class="food-info">
-        <h3>Fruit Cup</h3>
-        <p>Fresh seasonal fruit with chili & lime</p>
-      </div>
-      <span class="food-tag">Sweet</span>
-    </div>
-    <div class="food-card">
       <span class="food-emoji">🍬</span>
       <div class="food-info">
-        <h3>Spicy Candy</h3>
-        <p>Authentic Mexican dulces & tamarindo</p>
+        <h3>Spicy Gummies</h3>
+        <p>Chamoy gummies, small or large bag</p>
       </div>
       <span class="food-tag hot">Caliente</span>
     </div>
@@ -600,7 +544,6 @@
 
 <div class="full-divider"></div>
 
-<!-- MENU -->
 <section id="menu">
   <div class="section-label">What We Make</div>
   <h2>Fresh. Bold. <em style="color: var(--red); font-style: italic;">Always</em> made with love.</h2>
@@ -610,22 +553,22 @@
       <span class="menu-emoji">🌽</span>
       <h3>Elote Cup</h3>
       <p>Classic street corn in a cup with mayo crema, cotija cheese, chili powder, and a squeeze of fresh lime. Creamy, crunchy, and completely addictive.</p>
+      <div class="menu-sizes">
+        <span class="size-pill">8 oz — $3</span>
+        <span class="size-pill">16 oz — $5</span>
+      </div>
       <div class="menu-spice">
         <span class="chili">🌶️</span><span class="chili">🌶️</span>
       </div>
     </div>
     <div class="menu-item red">
-      <span class="menu-emoji">🍉</span>
-      <h3>Fruit Cup</h3>
-      <p>Hand-cut seasonal fresh fruit topped with Tajín, chamoy sauce, and lime juice. Sweet, tangy, and a little wild — the perfect treat for any day.</p>
-      <div class="menu-spice">
-        <span class="chili">🌶️</span>
-      </div>
-    </div>
-    <div class="menu-item mixed">
       <span class="menu-emoji">🍬</span>
-      <h3>Spicy Candy</h3>
-      <p>A curated selection of authentic Mexican dulces — tamarindo, pulparindo, lucas, and more. Sugary, sour, and packed with chile heat.</p>
+      <h3>Spicy Gummies</h3>
+      <p>Chamoy-coated gummies loaded with Tajín and tamarindo flavor. Sweet, sour, and spicy all at once — totally addicting and impossible to stop at just one.</p>
+      <div class="menu-sizes">
+        <span class="size-pill hot">Small — $3</span>
+        <span class="size-pill hot">Large — $5</span>
+      </div>
       <div class="menu-spice">
         <span class="chili">🌶️</span><span class="chili">🌶️</span><span class="chili">🌶️</span>
       </div>
@@ -635,72 +578,56 @@
 
 <div class="full-divider"></div>
 
-<!-- PRICING -->
 <section id="pricing">
   <div class="section-label">Pricing</div>
   <h2>Simple, <em style="color: var(--purple); font-style: italic;">honest</em> prices.</h2>
   <p class="section-sub">No hidden fees, no surprises. Just great snacks at fair prices.</p>
   <div class="pricing-grid">
-    <div class="price-card">
+    <div class="price-card featured">
+      <div class="featured-badge">Fan Favorite</div>
       <span class="price-emoji">🌽</span>
       <h3>Elote Cup</h3>
-      <div class="price-amount">$6</div>
-      <p class="price-desc">Classic or spicy — your call</p>
-      <ul class="price-features">
-        <li><span class="checkmark">✓</span> Fresh corn</li>
-        <li><span class="checkmark">✓</span> Crema & cotija</li>
-        <li><span class="checkmark">✓</span> Chili & lime</li>
-        <li><span class="checkmark">✓</span> Customizable heat</li>
-      </ul>
-      <button class="price-btn">Add to Order</button>
-    </div>
-    <div class="price-card featured">
-      <div class="featured-badge">Most Popular</div>
-      <span class="price-emoji">🍉</span>
-      <h3>Fruit Cup</h3>
-      <div class="price-amount">$7</div>
-      <p class="price-desc">Loaded & fresh every time</p>
-      <ul class="price-features">
-        <li><span class="checkmark">✓</span> Seasonal fruit</li>
-        <li><span class="checkmark">✓</span> Tajín & chamoy</li>
-        <li><span class="checkmark">✓</span> Fresh lime squeeze</li>
-        <li><span class="checkmark">✓</span> Small or large size</li>
-      </ul>
-      <button class="price-btn">Add to Order</button>
+      <div class="price-row">
+        <span class="size-label">8 oz</span>
+        <span class="price-val">$3</span>
+      </div>
+      <div class="price-row">
+        <span class="size-label">16 oz</span>
+        <span class="price-val">$5</span>
+      </div>
+      <a href="https://gl.me/u/TkzVlKZMhJsb" target="_blank" class="price-btn">Order via Greenlight</a>
     </div>
     <div class="price-card">
       <span class="price-emoji">🍬</span>
-      <h3>Spicy Candy</h3>
-      <div class="price-amount">$3</div>
-      <p class="price-desc">Mix & match your favorites</p>
-      <ul class="price-features">
-        <li><span class="checkmark">✓</span> Tamarindo classics</li>
-        <li><span class="checkmark">✓</span> Chamoy gummies</li>
-        <li><span class="checkmark">✓</span> Lucas & pulparindo</li>
-        <li><span class="checkmark">✓</span> Individual pieces</li>
-      </ul>
-      <button class="price-btn">Add to Order</button>
+      <h3>Spicy Gummies</h3>
+      <div class="price-row">
+        <span class="size-label">Small bag</span>
+        <span class="price-val">$3</span>
+      </div>
+      <div class="price-row">
+        <span class="size-label">Large bag</span>
+        <span class="price-val">$5</span>
+      </div>
+      <a href="https://gl.me/u/TkzVlKZMhJsb" target="_blank" class="price-btn">Order via Greenlight</a>
     </div>
   </div>
 </section>
 
-<!-- PAYMENT BANNER -->
 <div class="payment-banner" id="contact">
   <h3>Ready to order? We make it easy.</h3>
   <p>We accept payments through Greenlight — fast, safe, and simple.</p>
-  <div class="greenlight-badge">
+  <a href="https://gl.me/u/TkzVlKZMhJsb" target="_blank" class="greenlight-badge">
     <div class="greenlight-dot"></div>
     Pay with Greenlight
-  </div>
+  </a>
   <p style="margin-top: 1.25rem; font-size: 0.8rem; color: #6B7280;">
-    Or reach us directly to place an order or ask about availability.
+    Serving Maricopa, AZ · Reach out to check availability.
   </p>
 </div>
 
-<!-- FOOTER -->
 <footer>
   <div class="footer-logo">A & N <span>Sweet n Spicy</span></div>
-  <p>Phoenix, AZ · Mexican Snacks Done Right</p>
+  <p>Maricopa, AZ · Mexican Snacks Done Right</p>
   <p>© 2026 A & N Sweet n Spicy</p>
 </footer>
 
