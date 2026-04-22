@@ -8,6 +8,7 @@
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
 
 <style>
+/* KEEP ALL YOUR ORIGINAL CSS */
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
 :root {
@@ -22,141 +23,12 @@
   --border: #E9E3F5;
 }
 
-body {
-  font-family: 'DM Sans', sans-serif;
-  background: var(--cream);
-  color: var(--dark);
-}
-
-/* NAV */
-nav {
-  position: fixed;
-  top: 0;
-  left: 0;
-  right: 0;
-  z-index: 100;
-  background: rgba(255,253,247,0.92);
-  backdrop-filter: blur(12px);
-  border-bottom: 1px solid var(--border);
-  padding: 0 2rem;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  height: 64px;
-}
-
-.nav-logo {
-  display: flex;
-  align-items: center;
-  gap: 10px;
-  font-family: 'Playfair Display', serif;
-  font-weight: 700;
-  color: var(--purple);
-}
-
-.nav-logo img {
+/* ADD THIS */
+.logo-img {
   height: 40px;
-  border-radius: 8px;
-}
-
-.nav-links {
-  display: flex;
-  gap: 2rem;
-  list-style: none;
-}
-
-.nav-links a {
-  text-decoration: none;
-  font-size: 0.875rem;
-  color: var(--dark);
-}
-
-.nav-cta {
-  background: var(--red);
-  color: white;
-  padding: 0.5rem 1.25rem;
-  border-radius: 999px;
-  text-decoration: none;
-}
-
-/* HERO */
-.hero {
-  padding: 6rem 2rem 3rem;
-  text-align: center;
-}
-
-h1 {
-  font-family: 'Playfair Display', serif;
-  font-size: 3rem;
-}
-
-.hero-sub {
-  margin-top: 1rem;
-  color: var(--gray);
-}
-
-/* SECTIONS */
-section {
-  padding: 3rem 2rem;
-  max-width: 1000px;
-  margin: auto;
-}
-
-.menu-item {
-  background: white;
-  border: 1px solid var(--border);
-  border-radius: 16px;
-  padding: 1.5rem;
-  margin-bottom: 1rem;
-}
-
-/* CONTACT */
-.payment-banner {
-  background: var(--dark);
-  color: white;
-  text-align: center;
-  padding: 3rem 2rem;
-}
-
-.greenlight-btn {
-  display: inline-block;
-  background: #16A34A;
-  color: white;
-  padding: 0.6rem 1.5rem;
-  border-radius: 999px;
-  text-decoration: none;
-  margin-top: 1rem;
-}
-
-.instagram-btn {
-  display: inline-block;
-  background: #E1306C;
-  color: white;
-  padding: 0.6rem 1.5rem;
-  border-radius: 999px;
-  text-decoration: none;
-  margin-top: 1rem;
-}
-
-/* FOOTER */
-footer {
-  background: var(--dark);
-  color: white;
-  padding: 2rem;
-  display: flex;
-  justify-content: space-between;
-  flex-wrap: wrap;
-}
-
-.footer-logo {
-  display: flex;
-  align-items: center;
-  gap: 10px;
-}
-
-.footer-logo img {
-  height: 40px;
-  border-radius: 8px;
+  border-radius: 10px;
+  margin-right: 10px;
+  vertical-align: middle;
 }
 </style>
 </head>
@@ -166,63 +38,51 @@ footer {
 <!-- NAV -->
 <nav>
   <div class="nav-logo">
-    <img src="logo.png">
-    A & N Sweet n Spicy
+    <img src="logo.png" class="logo-img">
+    A & N <span>Sweet n Spicy</span>
   </div>
+
   <ul class="nav-links">
     <li><a href="#menu">Menu</a></li>
+    <li><a href="#pricing">Pricing</a></li>
     <li><a href="#contact">Contact</a></li>
   </ul>
-  <a href="https://gl.me/u/TkzVlKZMhJsb" target="_blank" class="nav-cta">Order</a>
+
+  <a href="https://gl.me/u/TkzVlKZMhJsb" target="_blank" class="nav-cta">Order Now</a>
 </nav>
 
-<!-- HERO -->
-<div class="hero">
-  <h1>Sweet. Spicy. Unforgettable.</h1>
-  <p class="hero-sub">Authentic Mexican snacks made fresh.</p>
-</div>
+<!-- KEEP EVERYTHING ELSE THE SAME (HERO, MENU, PRICING, ETC.) -->
 
-<!-- MENU -->
-<section id="menu">
-  <h2>Menu</h2>
-
-  <div class="menu-item">
-    <h3>🌽 Elote Cup</h3>
-    <p>8 oz — $3<br>16 oz — $5</p>
-  </div>
-
-  <div class="menu-item">
-    <h3>🍬 Spicy Gummies</h3>
-    <p>Small — $3<br>Large — $5</p>
-  </div>
-</section>
-
-<!-- CONTACT -->
+<!-- CONTACT SECTION -->
 <div class="payment-banner" id="contact">
-  <h2>Order Now</h2>
+  <h3>Ready to order? We make it easy.</h3>
+  <p>We accept payments through Greenlight — fast, safe, and simple.</p>
 
-  <a href="https://gl.me/u/TkzVlKZMhJsb" target="_blank" class="greenlight-btn">
+  <a href="https://gl.me/u/TkzVlKZMhJsb" target="_blank" class="greenlight-badge">
     Pay with Greenlight
   </a>
 
-  <br>
+  <!-- ✅ NEW INSTAGRAM BUTTON -->
+  <div style="margin-top:20px;">
+    <a href="https://instagram.com/a.n.sweetnspicy" target="_blank"
+       style="background:#E1306C; color:white; padding:10px 20px; border-radius:999px; text-decoration:none; display:inline-block;">
+       📸 Follow us on Instagram @a.n.sweetnspicy
+    </a>
+  </div>
 
-  <a href="https://instagram.com/a.n.sweetnspicy" target="_blank" class="instagram-btn">
-    📸 @a.n.sweetnspicy
-  </a>
-
-  <p style="margin-top: 1rem; color: #aaa;">
-    Maricopa, AZ
+  <p style="margin-top: 1.25rem; font-size: 0.8rem; color: #6B7280;">
+    Serving Maricopa, AZ · Reach out to check availability.
   </p>
 </div>
 
 <!-- FOOTER -->
 <footer>
   <div class="footer-logo">
-    <img src="logo.png">
-    A & N Sweet n Spicy
+    <img src="logo.png" class="logo-img">
+    A & N <span>Sweet n Spicy</span>
   </div>
 
+  <p>Maricopa, AZ · Mexican Snacks Done Right</p>
   <p>© 2026 A & N Sweet n Spicy</p>
 </footer>
 
